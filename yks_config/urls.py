@@ -22,8 +22,23 @@
 # if settings.DEBUG:
 #     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 #     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+##DevelopMent
+# # C:\Users\Admin\Desktop\TheYKSApp\yks_config\urls.py
+# from django.contrib import admin
+# from django.urls import path, include
+# from django.conf import settings
+# from django.conf.urls.static import static
 
-# C:\Users\Admin\Desktop\TheYKSApp\yks_config\urls.py
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path('accounts/api/', include('accounts.urls')),  # ✅ Prefix handles /accounts/api/
+#     path('courses/api/', include('courses.urls')),
+#     path('pages/api/', include('pages.urls')),
+#     path('mentorship/api/', include('mentorship.urls')),
+# ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+###Production
+# yks_config/urls.py
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -31,8 +46,12 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/api/', include('accounts.urls')),  # ✅ Prefix handles /accounts/api/
+    path('accounts/api/', include('accounts.urls')),
     path('courses/api/', include('courses.urls')),
     path('pages/api/', include('pages.urls')),
     path('mentorship/api/', include('mentorship.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+# Serve media files in development only
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
