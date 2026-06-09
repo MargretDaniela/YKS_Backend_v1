@@ -351,7 +351,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # DEBUG = True 2
 DEBUG = False
 # 3ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '172.16.39.74', '0.0.0.0', '*']
-ALLOWED_HOSTS = ['https://yks-backend-v1.onrender.com']
+ALLOWED_HOSTS = ['yks-backend-v1.onrender.com', '127.0.0.1', 'localhost']
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL = '/admin/login/'
 LOGIN_REDIRECT_URL = '/admin/'
@@ -472,7 +472,9 @@ USE_TZ = True
 # ======================================================================
 STATIC_URL = '/static/'
 # STATICFILES_DIRS = [BASE_DIR / 'static']#5
+#  10 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'                     # ✅ Already present
 MEDIA_ROOT = BASE_DIR / 'media'           # ✅ Already present
@@ -797,8 +799,8 @@ EMAIL_PORT          = 587
 EMAIL_USE_TLS       = True
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-# EMAIL_HOST_USER     = 'danielamargret6@gmail.com'
-# EMAIL_HOST_PASSWORD = 'mxwt jrmk fcvm sroz'
+# 8EMAIL_HOST_USER     = 'danielamargret6@gmail.com'
+# 9EMAIL_HOST_PASSWORD = 'mxwt jrmk fcvm sroz'
 DEFAULT_FROM_EMAIL  = 'Youth KEY Series <danielamargret6@gmail.com>'
 
 # ======================================================================
