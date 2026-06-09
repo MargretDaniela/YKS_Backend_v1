@@ -472,7 +472,7 @@ USE_TZ = True
 # ======================================================================
 STATIC_URL = '/static/'
 # STATICFILES_DIRS = [BASE_DIR / 'static']#5
-#  10 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
