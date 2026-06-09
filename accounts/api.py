@@ -634,11 +634,13 @@ def forgot_password_api(request):
     try:
         user = User.objects.get(email=email)
 
-        # Delete old OTPs and create new one
+        # Delete old unused OTPs and create a new one
         OTPCode.objects.filter(user=user, is_used=False).delete()
         code = generate_otp()
         expires_at = timezone.now() + timedelta(minutes=10)
-        OTPCode.objects.create(user=user, code=code, expires_at=expires_at, purpose='password_reset')
+
+        # ✅ FIX: removed purpose='password_reset' — field doesn't exist on OTPCode model
+        OTPCode.objects.create(user=user, code=code, expires_at=expires_at)
 
         # Send reset email (non-blocking)
         try:
@@ -688,11 +690,10 @@ def verify_reset_otp_api(request):
             "error": "Invalid code or email.",
         }, status=status.HTTP_400_BAD_REQUEST)
 
-    # Find valid password reset OTP
+    # ✅ FIX: removed purpose='password_reset' filter — field doesn't exist on OTPCode model
     otp = user.otp_codes.filter(
-        code=code, 
-        is_used=False, 
-        purpose='password_reset'
+        code=code,
+        is_used=False,
     ).first()
 
     if not otp or not otp.is_valid():
