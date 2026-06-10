@@ -491,14 +491,15 @@ USE_TZ = True
 # ======================================================================
 #  STATIC & MEDIA FILES
 # ======================================================================
+
+# STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [BASE_DIR / 'static']#5
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-MEDIA_URL = '/media/'                     # ✅ Already present
-MEDIA_ROOT = BASE_DIR / 'media'           # ✅ Already present
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 # ✅ MISSING: Upload size limits (2 GB max for video uploads)
 DATA_UPLOAD_MAX_MEMORY_SIZE = 2 * 1024 * 1024 * 1024      # 2 GB
