@@ -350,7 +350,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 # 7SECRET_KEY = 'youthkey-series-django-secret-key-2026-very-long-string'
 # DEBUG = True 2
-DEBUG = False
+# DEBUG = False
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 # 3ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '172.16.39.74', '0.0.0.0', '*']
 ALLOWED_HOSTS = ['yks-backend-v1.onrender.com', '127.0.0.1', 'localhost']
 AUTH_USER_MODEL = 'accounts.User'
