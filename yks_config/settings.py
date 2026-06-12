@@ -574,10 +574,15 @@ JAZZMIN_SETTINGS = {
         {"name": "Users",     "url": "/admin/accounts/user/",    "permissions": ["accounts.view_user"]},
         {"name": "Payments",  "url": "/admin/payments/payment/", "permissions": ["payments.view_payment"]},
     ],
+
     "usermenu_links": [
-        {"name": "My Profile", "url": "admin:accounts_user_change", "icon": "fas fa-user-circle"},
-        {"name": "Sign Out",   "url": "/admin/logout/",             "icon": "fas fa-sign-out-alt"},
-    ],
+    {"name": "My Profile", "url": "/admin/accounts/user/", "icon": "fas fa-user-circle"},
+    {"name": "Sign Out",   "url": "/admin/logout/",        "icon": "fas fa-sign-out-alt"},
+      ],
+    # "usermenu_links": [
+    #     {"name": "My Profile", "url": "admin:accounts_user_change", "icon": "fas fa-user-circle"},
+    #     {"name": "Sign Out",   "url": "/admin/logout/",             "icon": "fas fa-sign-out-alt"},
+    # ],
 
     # ── Sidebar menu order (controls what appears and in what order) ──
     "order_with_respect_to": [
@@ -818,8 +823,10 @@ SIMPLE_JWT = {
 EMAIL_BACKEND       = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST          = 'smtp.gmail.com'
 # EMAIL_PORT          = 587
-EMAIL_PORT          = 465
-EMAIL_USE_TLS       = True
+EMAIL_PORT    = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+# EMAIL_USE_TLS       = True
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 # 8EMAIL_HOST_USER     = 'danielamargret6@gmail.com'
